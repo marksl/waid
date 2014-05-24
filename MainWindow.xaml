@@ -1,0 +1,27 @@
+﻿<Window x:Class="Waid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tb="clr-namespace:Hardcodet.Wpf.TaskbarNotification"
+        xmlns:Waid="clr-namespace:Waid" 
+        Title="MainWindow" Height="350" Width="525" Visibility="Hidden">
+    <Grid>
+        <tb:TaskbarIcon
+        x:Name="MyNotifyIcon"
+        IconSource="/Icons/29-11.ico"
+        ToolTipText="What am I doing?" >
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+
+                    <MenuItem  Header="What have I done?" Command="Waid:Commands.ShowMeTheMoney" ></MenuItem>
+                    <Separator/>
+                    <MenuItem  Header="Settings" Command="Waid:Commands.ShowSettings" ></MenuItem>
+                    <Separator/>
+                    <MenuItem Header="Exit" Command="Waid:Commands.Exit" ></MenuItem>
+                    
+                </ContextMenu>
+                
+            </tb:TaskbarIcon.ContextMenu>
+            
+        </tb:TaskbarIcon>
+    </Grid>
+</Window>

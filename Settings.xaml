@@ -1,0 +1,31 @@
+﻿<Window x:Class="Waid.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings" Height="492.666" Width="342.666"  WindowStyle="ToolWindow">
+    
+    <Grid >
+        <CheckBox Name="Sunday" Content="Sunday" HorizontalAlignment="Left" Margin="24,45,0,0" VerticalAlignment="Top" />
+        <CheckBox Name="Monday" Content="Monday" HorizontalAlignment="Left" Margin="24,60,0,0" VerticalAlignment="Top" />
+        <CheckBox Name="Tuesday" Content="Tuesday" HorizontalAlignment="Left" Margin="24,75,0,0" VerticalAlignment="Top" />
+        <CheckBox Name="Wednesday" Content="Wednesday" HorizontalAlignment="Left" Margin="24,90,0,0" VerticalAlignment="Top" />
+        <CheckBox Name="Thursday" Content="Thursday" HorizontalAlignment="Left" Margin="24,105,0,0" VerticalAlignment="Top" />
+        <CheckBox Name="Friday" Content="Friday" HorizontalAlignment="Left" Margin="24,120,0,0" VerticalAlignment="Top" />
+        <CheckBox Name="Saturday" Content="Saturday" HorizontalAlignment="Left" Margin="24,135,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.53,1.733" />
+        <TextBox Name="UserId" HorizontalAlignment="Left" Height="23" Margin="24,308,0,0" TextWrapping="Wrap" Text="login to waidmonitor.com" VerticalAlignment="Top" Width="283"/>
+        <TextBlock HorizontalAlignment="Left"  FontSize="14" FontWeight="Bold" Margin="24,287,0,0" TextWrapping="Wrap" Text="This is my User ID" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="14" FontWeight="Bold"
+                   Margin="24,24,0,0" TextWrapping="Wrap" Text="Watch me on these days:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" Margin="24,161,0,0" TextWrapping="Wrap" Text="Watch me during these times:" VerticalAlignment="Top"/>
+        <Slider Name="Start" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="BottomRight"  Minimum="0" Maximum="24" HorizontalAlignment="Left" Margin="24,209,0,0" VerticalAlignment="Top" Width="127"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,188,0,0" TextWrapping="Wrap" Text="Start" VerticalAlignment="Top"/>
+        <Slider Name="End" IsSnapToTickEnabled="True" TickFrequency="1" TickPlacement="BottomRight" Minimum="0" Maximum="24" HorizontalAlignment="Left" Margin="24,252,0,0" VerticalAlignment="Top" Width="127" ValueChanged="End_ValueChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,232,0,0" TextWrapping="Wrap" Text="End" VerticalAlignment="Top"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="232,402,0,0" VerticalAlignment="Top" Width="75" Click="SaveClick"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="145.273,402,0,0" VerticalAlignment="Top" Width="75" Click="CancelClick"/>
+        <TextBlock Name="EndText" HorizontalAlignment="Left" Margin="156,253,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.227,0.021" Height="18"/>
+        <TextBlock Name="StartText" HorizontalAlignment="Left" Margin="156,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.227,0.021" Height="18"/>
+        <TextBlock Name="RunAtStartText"  HorizontalAlignment="Left"  FontSize="14" FontWeight="Bold" Margin="24,346,0,0" TextWrapping="Wrap" Text="Run at startup" VerticalAlignment="Top"/>
+        <CheckBox Name="RunAtStart" Content="Waid will run when this computer starts" HorizontalAlignment="Left" Margin="24,369.62,0,0" VerticalAlignment="Top" />
+
+    </Grid>
+</Window>
