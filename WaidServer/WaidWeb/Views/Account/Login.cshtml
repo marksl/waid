@@ -1,0 +1,42 @@
+﻿@model AuthenticationClientData
+
+@{
+    ViewBag.Title = "What am I doing?";
+    Layout = "~/Views/Shared/_BootstrapLayout.cshtml";
+}
+<h2></h2>
+
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit">
+    <h1>What am I doing?</h1>
+    <p>WAID is a free personal activity monitor for your computer. It has a simple goal - to bring visibility to how you use the computer on a daily, weekly and monthly basis! </p>
+    <p>Setup takes only a minute. It is completely free and you can stop anytime.</p>
+    @using (Html.BeginForm("ExternalLogin", "Account", new {ViewBag.ReturnUrl}))
+    {
+        @Html.AntiForgeryToken()
+        <button class="btn btn-primary btn-large" type="submit" name="provider" value="@Model.AuthenticationClient.ProviderName" title="Log in using your @Model.DisplayName account">Login with Google &raquo;</button>
+    }
+</div>
+           
+<div class="row">
+    <div class="span4">
+        <h2>What it does</h2>
+        <p>WAID is a small application that runs in the background. It keeps track of what applications you are using and sends that information to the cloud. </p>
+        <img  src="~/Content/images/task-bar.png" alt=""/>
+        
+    </div>
+    <div class="span4">
+        <h2>What you see</h2>
+        <p>From the tray icon you can login to the view charts and tables of information about your daily activity usage!</p>
+        <p>
+            @Html.ActionLink("View details »", "WhatYouSee", "Home", new{}, new { @class="btn"})
+        </p>
+    </div>
+    <div class="span4">
+        <h2>How it works</h2>
+        <p>Waid.exe runs in the background collecting information about what applications are running and whether or not you are in fact using your computer. This happens roughly 10 times a second. Great care has been...</p>
+        <p>
+            @Html.ActionLink("View details »", "HowItWorks", "Home", new{}, new { @class="btn"})
+        </p>
+    </div>
+</div>

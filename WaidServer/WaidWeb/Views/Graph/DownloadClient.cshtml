@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Download Client";
+    Layout = "~/Views/Shared/_BootstrapLayout.cshtml";
+}
+
+<div class="row">
+    <div class="span6">
+    
+          <h3>
+            Step 1. <a class="btn btn-primary" href="~/Content/Waid.zip">Download</a> and unzip the latest client.
+                </h3>
+        <p class="lead">
+          
+        </p>
+        
+        <h3>
+        Step 2. Run the client.
+            </h3>
+        <img src="~/Content/images/run-the-client.png" />
+        
+        <p>Remember - no installation is required. If you're uncertain about running the executable, feel free to scan it with <a target="_blank" href="http://virustotal.com">virustotal.com</a> or a similar site.</p>
+        
+        <h3>
+            Step 3. Enter your User ID 
+        </h3>
+        
+        <p>This is your User ID: </p>
+        <p class="well">@ViewBag.UploadId</p>
+        
+        <p>Enter it here (and click Save)</p>
+        <img src="~/Content/images/settings-dialog.png" />
+        
+        <h3>
+            Step 4. Wait
+        </h3>
+        
+        <p>Start using your computer and come back in about 10 minutes. Enjoy!</p>
+        
+
+    </div>
+    
+</div>
+

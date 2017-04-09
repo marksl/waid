@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "How it works";
+    Layout = "~/Views/Shared/_BootstrapLayout.cshtml";
+}
+
+<div class="row">
+    <div class="span8">
+        <h2>How it works</h2>
+        
+        <p>Waid.exe runs in the background collecting information about what applications are running and whether or not you are in fact using your computer. This happens roughly 10 times a second. Great care has been made to make these 10 queries per second very fast. 
+            On an 4 year old machine, CPU usage never goes above 1% and there is no disk usage ever. You should not notice Waid is even running!
+            After collecting information, data is pushed to Waid's cloud servers, roughly every 5 minutes.
+            Transmitting batches every 5 minutes avoids clogging your network with lots of activity.
+        </p>
+
+    </div>
+    
+    <div class="span8 offset4">
+        <h2>Zero Installation Required</h2>
+        <p>
+            There is <strong>zero installation</strong> required to run Waid.exe. This was intentional. Windows Application Installers support making large system changes - from modifying core system libraries to downloading any other application.
+            Waid.exe makes no changes to your system. Waid.exe has <strong>zero installation</strong>. Okay, this is not quite true - selecting 'Run at startup' from the settings dialog adds an entry to the Windows Registry - but that's it! And that
+            option can be turned off, removing the 1 line modification from the Windows registry.
+        </p>
+    </div>
+    
+    <div class="span8">
+        <h2>Components</h2>
+        <p>There are four components to Waid.</p>
+        <ol>
+            <li>Waid.exe - the little program that collects information.</li>
+            <li>Waid Web - where data is uploaded and where you can view what you have done.</li>
+            <li>Azure SQL Server - stores a list of users and colors. <strong>NO</strong> user passwords are ever stored.</li>
+            <li>Azure Table Storage - NoSQL DB that stores all user activity data.</li>
+        </ol>
+        <img src="~/Content/images/arch-component-diagram.png" />
+    </div>
+    
+    <div class="span8 offset4">
+        <h2>Modules</h2>
+        <p>There are several modules to Waid. The most noteable are:</p>
+        <ul>
+            <li>Operating System - Low level Windows APIs to see what a user is doing.</li>
+            <li>Collector - Responsible for collecting information from the Operating System.</li>
+            <li>Log - Temporary holding area for collected information.</li>
+            <li>Repository - Permanent holding area for user activity data.</li>
+            <li>Transporter - Responsible for taking data from the Log to the Repository.</li>
+        </ul>
+        <img src="~/Content/images/arch-module-diagram.png" />
+    </div>
+    
+    <div class="span8">
+        <h2>Azure Table Storage</h2>
+        <p>
+            The Table schema was designed to minimize the number of reads and writes to Azure Table Service. Lists were serialized to byte arrays to fit into a single table. This is preferable to having a large number of small entries leading to a large number of insertions and queries that would become costly. 
+        </p>
+
+        <img src="~/Content/images/arch-azure.png" />
+    </div>
+
+
+    <div class="span8 offset4">
+        <h2>Frameworks</h2>
+            
+        <p>
+            Waid.exe uses .Net 3.5 - not the latest .Net 4.5. 3.5 comes installed on Windows 7 and above.  Using the latest version (.Net 4.5) would be fun, but requiring users to potentially download up to 50 megabytes is just silly.
+        </p>
+        
+        <p>Waid Web used lots of cool technologies. Ultimately all the user sees is HTML and Javascript - that left the server side open to a lot of cool toys. Here's a fairly complete list:</p>
+        
+        <ul>
+            <li>ASP.Net MVC 4</li>
+            <li>ASP.Net Web API</li>
+            <li>Razor view engine</li>
+            <li>Azure Cloud Services</li>
+            <li>Azure Table Storage</li>
+            <li>Azure SQL Server</li>
+            <li>Entity Framework 4.5</li>
+            <li>DotNetOpenAuth</li>
+            <li>Twitter Bootstrap</li>
+            <li>High Charts</li>
+            <li>Windows Presentation Foundation</li>
+        </ul>
+    
+    </div>
+    
+    <div class="span12">
+        <hr>
+
+        <footer>
+            <p>&copy; Mark Lamley (<img src="~/Content/images/disclaimer.png" />) 2012</p>
+        </footer>    
+
+    </div>
+        
+    
+</div>
+
+
+              

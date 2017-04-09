@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="WaidCloud" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2012-10.1.8">
+  <Role name="WaidWeb">
+    <Instances count="1" />
+    <ConfigurationSettings>
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

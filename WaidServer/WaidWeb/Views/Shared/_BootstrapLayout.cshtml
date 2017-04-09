@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>@ViewBag.Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Le styles -->
+        @*@Styles.Render("~/Content/themes/base/css", "~/Content/css")*@
+        
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        
+        @*<link href="~/Content/bootstrap.min.css" rel="stylesheet">*@
+        @*   <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>*@
+        @*<link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet">*@
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"> </script>
+        <![endif]-->
+    </head>
+
+    <body>
+        
+            
+            @if ((string)ViewContext.RouteData.Values["action"] != "Login")
+            {
+                <div class="container">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                
+                            @Html.ActionLink("WAID", "Today", "Graph", new { }, new { @class = "brand pull-left" })
+        
+                            <ul class="nav pull-right">
+                                <li>
+                                    <p class="navbar-text">@Html.Encode(User.Identity.Name)&nbsp;</p>        
+                                </li>
+                                <li>
+                                    @if (Request.IsAuthenticated)
+                                    {
+                                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-form"}))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <a href="javascript:document.getElementById('logoutForm').submit()" class="btn">Log off</a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class = "navbar-form">
+                                        <a href="/" class="navbar-form btn">Back</a>
+                                        </div>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        @if (Request.IsAuthenticated) {
+                            <div class="span3">
+
+                                <div class="well">
+                                    <ul class="nav nav-list">
+                                    
+                                        <li class="nav-header">Activity</li>
+                                    
+                                        @*TODO: Hmmmm do this programatically..*@
+
+                                        <li @if ((string)ViewContext.Controller.ValueProvider.GetValue("action").RawValue == "Today")
+                                            {
+                                                @:class="active"
+                                            }>
+                                            <a href="/Graph/Today">Today</a>
+                                        </li>
+                                    
+                                        <li @if ((string)ViewContext.Controller.ValueProvider.GetValue("action").RawValue == "TodayInNumbers")
+                                            {
+                                                @:class="active"
+                                            }>
+                                            <a href="/Graph/TodayInNumbers">Today in numbers</a>
+                                        </li>
+
+
+                                        <li
+                                            @if ((string)ViewContext.Controller.ValueProvider.GetValue("action").RawValue == "AnotherDay")
+                                            {
+                                                @:class="active"
+                                            }
+                                            ><a href="/Graph/AnotherDay">Select a day</a></li>
+                                    
+                                    
+                                        <li
+                                            @if ((string)ViewContext.Controller.ValueProvider.GetValue("action").RawValue == "AnotherDayInNumbers")
+                                            {
+                                                @:class="active"
+                                            }
+                                            ><a href="/Graph/AnotherDayInNumbers">Select a day for numbers</a></li>
+                                    
+                                        <li class="divider"></li>
+
+                                        <li
+                                            @if ((string)ViewContext.Controller.ValueProvider.GetValue("action").RawValue == "DownloadClient")
+                                            {
+                                                @:class="active"
+                                            }
+                                            ><a href="/Graph/DownloadClient">Download Client</a></li>
+                                        
+                                        <li class="divider"></li>
+                                        
+                                        <li
+                                            @if ((string)ViewContext.Controller.ValueProvider.GetValue("action").RawValue == "Feedback"
+                                                || (string)ViewContext.Controller.ValueProvider.GetValue("action").RawValue == "SubmitFeedback")
+                                            {
+                                                @:class="active"
+                                            }
+                                            ><a href="/Graph/Feedback">Feedback</a></li>
+
+
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                            }
+
+                        <div class="span9">
+                            @RenderBody()
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+            else
+            {
+                <div class="container">
+                @RenderBody()
+
+                <hr>
+
+            <footer>
+                <p>&copy; Mark Lamley (<img src="~/Content/images/disclaimer.png" />) 2012</p>
+            </footer>
+
+        </div> <!-- /container -->
+                
+            }
+            
+    
+
+
+        <!-- Le javascript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        @Scripts.Render("~/bundles/jquery")
+        <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript">
+            jQuery.noConflict();
+        </script>
+        @Scripts.Render("~/bundles/highcharts")
+      
+        @RenderSection("scripts", required: false)
+
+    </body>
+</html>

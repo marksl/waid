@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "What am I doing?";
+    Layout = "~/Views/Shared/_BootstrapLayout.cshtml";
+}
+
+<h1 style="text-align:center" id="dailyTitle"></h1>
+
+<div id="no-data" class="alert alert-info" style="display:none" >
+</div>
+
+
+<div id="piegraph" style="height: 400px; margin: 0 auto; min-width: 400px;">
+    
+</div>
+
+<table id="hourly-table" class="table" />
+
+
+<div id="hourlycharts" style="margin: 0 auto; min-width: 400px;">
+
+</div>
+
+@section scripts {
+    <script src="~/Scripts/Today.js"> </script>   
+}

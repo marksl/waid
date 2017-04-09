@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Views/Shared/_BootstrapLayout.cshtml";
+}
+
+<script type="text/javascript">
+    function validateField() {
+        var feedbackString = document.getElementById('feedback').value;
+        
+        if (/\S/.test(feedbackString)) {
+            document.getElementById("feedback-invalid").style.display = "none";
+            return true;
+        }
+        
+        document.getElementById("feedback-invalid").innerHTML = "Feedback required.";
+        document.getElementById("feedback-invalid").style.display = "inline-block";
+        
+        if (document.getElementById("thankyou") != null) {
+            document.getElementById("thankyou").style.display = "none";
+        }
+
+        return false;
+    }
+
+</script>
+
+<div class="row">
+    <div class="span6">
+    
+        <h3>Feedback
+        </h3>
+        
+        <p>This site started out of a desire to learn Microsoft's Azure and a desire to see how I use my computer. I want to focus my attention on what is most important to users so I'm interested to hear what you would like to see on the site!</p>
+        
+        @using (Html.BeginForm("SubmitFeedback", "Graph"))
+        {
+            @Html.AntiForgeryToken()
+
+            <textarea class="input-xxlarge" rows="4" id="feedback" name="feedback"></textarea>
+            <button class="btn btn-primary btn-large" title="Submit"  type="submit" onclick="return validateField()">Submit</button>
+        }
+        
+        <div id="feedback-invalid" class="alert alert-block alert-error fade in" style="display:none" >
+        </div>
+
+
+        @if (ViewBag.Submitted)
+        {
+            <div id="thankyou" class="alert alert-success">Thank you for your feedback!</div>
+        }
+  
+    </div>
+</div>
